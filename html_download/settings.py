@@ -7,6 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+HTML_STORAGE = {
+    'save_html_on_status': [200]
+}
+
 BOT_NAME = 'html_download'
 
 SPIDER_MODULES = ['html_download.spiders']
@@ -44,9 +48,10 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    'html_download.middlewares.HtmlDownloadSpiderMiddleware': 543,
-#}
+SPIDER_MIDDLEWARES = {
+   'html_download.middlewares.HtmlDownloadSpiderMiddleware': 543,
+   'html_download.middlewares.HtmlStorageMiddleware': 10,
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
